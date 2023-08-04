@@ -44,6 +44,12 @@
         <p class="section__text__p1">Hello, I'm</p>
         <h1 class="title">Bibash Koirala</h1>
         <p class="section__text__p2">Backend Developer</p>
+        <div class="text-container">
+          <p id="description">
+          
+          </p>
+          
+        </div>
         <div class="btn-container">
           <button
             class="btn btn-color-2"
@@ -69,12 +75,26 @@
             onclick="location.href='https://github.com/'"
           />
         </div>
+        <div>
+          <p>
+            -नाम विवश कोइराला हो, रहरले जुनियर थपेको छु। अहिले पूर्वी नेपालको झापा - इलाममा बसेको छु। <br>
+            किबोर्ड र माउससँग खेल्न दैनिकी हो, आफूलाई कम्प्युटर प्रोग्रामर हो भनी टोप्लछु। <br>
+
+          -डिजाइन र एआई प्रविधिमा पनि उत्तेकै रुचि छ। धेरै कुरा सिक्दै छु, प्रविधिमा सानैदेखिको रुची हो, बेलाबेला क्यामेरा चेपेर फोटो–भिडियो खिच्न पनि निस्कन्छु, प्रविधिका अपडेटहरू पढ्न मन पर्छ, जानेका कुरा अरुलाई सिकाउन कुनै  धक मान्दिन। फाट्टफुट्ट वेबसाइट बनाउछु।
+
+         <br> - नेपालका निजी तथा सरकारी संस्थाहरु, डेनमार्क र फिलिपिन्सका कम्पनिहरूमा सेवा प्रदान गरेको छु। 
+
+          <br>- एउटी प्यारी श्रीमतिको श्रीमान हुँ। मायालु जापानको रहरमा परदेशी भएकी छिन ।
+          </p>
+        </div>
       </div>
+      
     </section>
     <section id="about">
       <p class="section__text__p1">Get To Know More</p>
       <h1 class="title">About Me</h1>
       <div class="section-container">
+
         <div class="section__pic-container">
           <img
             src="./assets/about-pic.jpg"
@@ -103,11 +123,7 @@
               <p>B.Sc. Csit Degree<br /> | Self-taught Programmer</p>
             </div>
           </div>
-          <div class="text-container">
-            <p id="description">
-              A passionate web developer with a love for Django and building scalable applications. Let's connect and collaborate!
-            </p>
-          </div>
+          <!-- ..................... -->
         </div>
       </div>
       <img
@@ -123,7 +139,7 @@
       <div class="experience-details-container">
         <div class="about-containers">
           <div class="details-container">
-            <h2 class="experience-sub-title">Backend Development</h2>
+            <h2 class="experience-sub-title">Playing With</h2>
             <div class="article-container">
               <article>
                 <img
@@ -143,8 +159,8 @@
                   class="icon"
                 />
                 <div>
-                  <h3>CSS</h3>
-                  <p>Better</p>
+                  <h3>Tailwind CSS</h3>
+                  <p>Better on</p>
                 </div>
               </article>
               <article>
@@ -154,7 +170,7 @@
                   class="icon"
                 />
                 <div>
-                  <h3>Python</h3>
+                  <h3>Bootstrap</h3>
                   <p>Intermediate</p>
                 </div>
               </article>
@@ -176,21 +192,11 @@
                   class="icon"
                 />
                 <div>
-                  <h3>Django</h3>
+                  <h3>Flutter</h3>
                   <p>Good</p>
                 </div>
               </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Git</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
+              
             </div>
           </div>
           <div class="details-container">
@@ -203,8 +209,8 @@
                   class="icon"
                 />
                 <div>
-                  <h3>PostgreSQL</h3>
-                  <p>Basic</p>
+                  <h3>Django</h3>
+                  <p>Prefered</p>
                 </div>
               </article>
               <article>
@@ -214,8 +220,8 @@
                   class="icon"
                 />
                 <div>
-                  <h3>JS</h3>
-                  <p>Intermediate</p>
+                  <h3>Python</h3>
+                  <p>Proficiency</p>
                 </div>
               </article>
               <article>
@@ -225,7 +231,18 @@
                   class="icon"
                 />
                 <div>
-                  <h3>Flutter</h3>
+                  <h3>Rest Api</h3>
+                  <p>Expertise</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Git</h3>
                   <p>Intermediate</p>
                 </div>
               </article>
@@ -373,22 +390,7 @@
       <p>Design Contributer &#169; 2023 John Doe. </p>
     </footer>
     <script src="script.js">
-       document.addEventListener('DOMContentLoaded', function () {
-        const descriptionElement = document.getElementById('description');
-        const descriptionText =
-          "A passionate web developer with a love for Django and building scalable applications. Let's connect and collaborate!";
-        let index = 0;
-
-        function type() {
-          descriptionElement.textContent += descriptionText[index];
-          index++;
-          if (index < descriptionText.length) {
-            setTimeout(type, 100); // Typing speed (adjust if needed)
-          }
-        }
-
-        setTimeout(type, 1000); // Delay before typing starts (adjust if needed)
-      });
+      
     </script>
   </body>
 </html>
