@@ -1,396 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bibashjr.py</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
-  </head>
-  <body>
-    <nav id="desktop-nav">
-      <div class="logo">BibashJr. Koirala</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
-    <nav id="hamburger-nav">
-      <div class="logo">BibashJr</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
-      </div>
-    </nav>
-    <section id="profile">
-      <div class="section__pic-container">
-        <img src="./assets/profile-pic.jpg" alt="BibashJr profile picture" />
-      </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Bibash Koirala</h1>
-        <p class="section__text__p2">Backend Developer</p>
-        <div class="text-container">
-          <p id="description">
-          
-          </p>
-          
-        </div>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2"
-            onclick="window.open('./assets/resume-example.pdf')"
-          >
-            Download CV
-          </button>
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">
-            Contact Info
-          </button>
-        </div>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://linkedin.com/'"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/'"
-          />
-        </div>
-        <div>
-          <p>
-            -नाम विवश कोइराला हो, रहरले जुनियर थपेको छु। अहिले पूर्वी नेपालको इलामको चुलाचुली गाउँपालिकामा सूचना प्रविधि अधिकृतको सेवामा रहेकोको छु। <br>
-            किबोर्ड र माउससँग खेल्न दैनिकी हो, रहर रहरमा १ जना साथि सँग मिलेर एउटा सफ्टवोएर कम्पनिपनि सञ्चालन गरिरहेका छौं । आफूलाई कम्पनिको सि.ई।ओ. हो भनी टोप्लछु। <br>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bibash Koirala</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="mediaqueries.css" />
+</head>
 
-          -डिजाइन र एआई प्रविधिमा पनि उत्तेकै रुचि छ। धेरै कुरा सिक्दै छु, प्रविधिमा सानैदेखिको रुची हो, बेलाबेला क्यामेरा चेपेर फोटो–भिडियो खिच्न पनि निस्कन्छु, प्रविधिका अपडेटहरू पढ्न मन पर्छ, जानेका कुरा अरुलाई सिकाउन कुनै  धक मान्दिन। फाट्टफुट्ट वेबसाइट बनाउछु। पालिकाहरुको डिजिटल प्रफाइल बनाउनमा धेरै समय लागिपरेर लागियो। आफुले काम गरेको सफ्वोएरको प्रसंसा सुन्दा रमाइलो लाग्ने। 
+<body>
+  <!-- NAV -->
+  <nav id="desktop-nav">
+    <div class="logo">Bibash Koirala</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-         <br> - नेपालका निजी तथा सरकारी संस्थाहरु, डेनमार्क र अस्ट्रेलिया लगायतका कम्पनिहरूमा सेवा प्रदान गरेको छु। 
+  <!-- PROFILE -->
+  <section id="profile">
+    <div class="section__pic-container">
+      <img src="./assets/profile-pic.jpg" alt="Bibash Koirala" />
+    </div>
 
-          <br>- एउटी प्यारी छोरीको बाबा हुँ। छोरीसँग खेल्ने मेरो दैनिकि हो ।
-          </p>
-        </div>
-      </div>
-      
-    </section>
-    <section id="about">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-      <div class="section-container">
+    <div class="section__text">
+      <p class="section__text__p1">Hello, I’m</p>
+      <h1 class="title">Bibash Koirala</h1>
+      <p class="section__text__p2">
+        Backend Developer • IT Officer • Digital Governance
+      </p>
 
-        <div class="section__pic-container">
-          <img
-            src="./assets/about-pic.jpg"
-            alt="Profile picture"
-            class="about-pic"
-          />
-        </div>
-        <div class="about-details-container">
-          <div class="about-containers">
-            <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3>Experience</h3>
-              <p>2+ years <br />Backend Development</p>
-            </div>
-            <div class="details-container">
-              <img
-                src="./assets/education.png"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3>Education</h3>
-              <p>B.Sc. Csit Degree<br /> </p>
-            </div>
-          </div>
-          <!-- ..................... -->
-        </div>
+      <p class="description">
+        I build backend systems, APIs, and digital platforms for public
+        institutions and private organizations. Currently serving as an
+        Information Technology Officer at Chulachuli Rural Municipality,
+        working on e-governance, automation, and digital transformation.
+      </p>
+
+      <div class="btn-container">
+        <button class="btn btn-color-2">Download CV</button>
+        <button class="btn btn-color-1" onclick="location.href='#contact'">
+          Contact Info
+        </button>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#experience'"
-      />
-    </section>
-    <section id="experience">
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Experience</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <h2 class="experience-sub-title">Playing With</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>HTML</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Tailwind CSS</h3>
-                  <p>Better on</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Bootstrap</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Figma</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Flutter</h3>
-                  <p>Good</p>
-                </div>
-              </article>
-              
-            </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Backend Development</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Django</h3>
-                  <p>Prefered</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Python</h3>
-                  <p>Proficiency</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Rest Api</h3>
-                  <p>Expertise</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Git</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Project Management</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-            </div>
-          </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h1 class="title">About Me</h1>
+
+    <p class="about-text">
+      मेरो नाम विवश कोइराला हो (रहरले “Jr.” थपिएको)। हाल पूर्वी नेपालको
+      इलाम जिल्ला अन्तर्गत चुलाचुली गाउँपालिकामा सूचना प्रविधि अधिकृत
+      रूपमा कार्यरत छु। डिजिटल सेवा विकास, सिस्टम व्यवस्थापन तथा
+      ई-गभर्नेन्समा सक्रिय छु।
+      <br><br>
+      साथीहरूसँग मिलेर सानो सफ्टवेयर कम्पनी सञ्चालन गर्दै आएको छु,
+      जहाँ Backend Development, API Design र Project Planning मा
+      संलग्न छु। डिजाइन, एआई र नयाँ प्रविधि सिक्ने रुचि छ।
+      <br><br>
+      नेपालका सरकारी तथा निजी संस्थाहरू, साथै डेनमार्क र अस्ट्रेलियाका
+      कम्पनीहरूलाई प्रविधि सेवा प्रदान गरेको अनुभव छ।
+      <br><br>
+      म एक प्यारी छोरीको बाबा पनि हुँ — छोरीसँग समय बिताउनु मेरो
+      दिनको सबैभन्दा रमाइलो हिस्सा हो।
+    </p>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <h1 class="title">Experience</h1>
+
+    <div class="experience-grid">
+      <div class="exp-card">Django / Python</div>
+      <div class="exp-card">REST API</div>
+      <div class="exp-card">Flutter</div>
+      <div class="exp-card">Git & Project Mgmt</div>
+      <div class="exp-card">E-Governance Systems</div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section id="timeline">
+    <h1 class="title">Project Timeline</h1>
+
+    <div class="timeline-wrapper">
+      <div class="timeline">
+
+        <div class="timeline-card">
+          <span>2022 • Jan</span>
+          <h3>Municipal Digital Profile</h3>
+          <p>Digital profiles for rural municipalities.</p>
         </div>
+
+        <div class="timeline-card">
+          <span>2022 • Aug</span>
+          <h3>Inventory System</h3>
+          <p>Django-based stock & supplier management.</p>
+        </div>
+
+        <div class="timeline-card">
+          <span>2023 • Feb</span>
+          <h3>E-Governance API</h3>
+          <p>REST APIs for municipal services.</p>
+        </div>
+
+        <div class="timeline-card">
+          <span>2023 • Nov</span>
+          <h3>Flutter Mobile App</h3>
+          <p>Cross-platform app with backend integration.</p>
+        </div>
+
+        <div class="timeline-card">
+          <span>2024 • Ongoing</span>
+          <h3>AI & Automation</h3>
+          <p>Exploring AI-assisted workflows.</p>
+        </div>
+
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#projects'"
-      />
-    </section>
-    <section id="projects">
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-1.png"
-                alt="Project 1"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Project One</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-2.png"
-                alt="Project 2"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Project Two</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-3.png"
-                alt="Project 3"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Project Three</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#projects'"
-      />
-    </section>
-    <section id="contact">
-      <p class="section__text__p1">Get in Touch - 9814963098</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p><a href="mailto:bibashkoirala78@gmail.com">bibashkoirala78@gmail.com</a></p>
-        </div>
-        <div class="contact-info-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p><a href="https://www.linkedin.com">LinkedIn</a></p>
-        </div>
-      </div>
-    </section>
-    <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-      <p>Design Contributer &#169; 2023 John Doe. </p>
-    </footer>
-    <script src="script.js">
-      
-    </script>
-  </body>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h1 class="title">Contact</h1>
+    <p>Email: bibashkoirala78@gmail.com</p>
+    <p>Phone: 9814963098</p>
+  </section>
+
+  <footer>
+    <p>© 2026 Bibash Koirala • Built with plain HTML</p>
+  </footer>
+</body>
 </html>
+.description, .about-text {
+  max-width: 900px;
+  margin: auto;
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.experience-grid {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.exp-card {
+  padding: 1rem 1.5rem;
+  background: #f5f5f5;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+/* TIMELINE */
+.timeline-wrapper {
+  overflow-x: auto;
+  padding: 2rem 0;
+}
+
+.timeline {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.timeline-card {
+  min-width: 260px;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.timeline-card span {
+  font-size: 0.8rem;
+  color: #777;
+  font-weight: 600;
+}
+
