@@ -41,8 +41,8 @@ const fallbackSiteData = {
     ]
   },
   experience: {
-    title: 'Experience, Projects, and Skills Timeline',
-    subtitle: 'Animated dot grows from center and reveals milestones as you scroll.',
+    title: 'Experience, Progress, and Skills Timeline',
+    subtitle: 'See my milestones as you scroll.',
     items: [
       { side: 'left', title: 'Jan 2022 | Municipal Digital Profile', description: 'Built structured digital profiles for rural municipality operations.' },
       { side: 'right', title: 'Aug 2022 | Inventory System', description: 'Django-based stock and supplier management with process control.' }
@@ -50,7 +50,7 @@ const fallbackSiteData = {
   },
   projects: {
     title: 'My Projects and Consultant Services',
-    subtitle: 'Add or edit up to 10 items in data/projects.json with client and product names.'
+    subtitle: 'Some important clients and signature products list:'
   },
   ticker: ['Backend Engineering', 'Django', 'REST API', 'E-Governance', 'Flutter', 'PostgreSQL'],
   contact: {
