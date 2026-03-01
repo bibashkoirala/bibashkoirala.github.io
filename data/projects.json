@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Municipal Digital Profile",
+    "summary": "Structured digital profile system for rural municipalities.",
+    "detail": "Designed and delivered standardized public profile modules to improve data availability and reporting.",
+    "link": "#",
+    "logo": "Gov Project",
+    "accent": "pink",
+    "image": "assets/images/project-1.png"
+  },
+  {
+    "title": "Inventory System",
+    "summary": "Django-based stock and supplier management workflows.",
+    "detail": "Implemented inventory lifecycle tracking, supplier records, and reporting for accountability.",
+    "link": "#",
+    "logo": "Django App",
+    "accent": "green",
+    "image": "assets/images/project-2.png"
+  },
+  {
+    "title": "E-Governance API",
+    "summary": "REST APIs for municipal services and inter-department workflows.",
+    "detail": "Built API-first architecture to reduce manual process friction and improve service response speed.",
+    "link": "#",
+    "logo": "API Stack",
+    "accent": "green",
+    "image": "assets/images/project-3.png"
+  },
+  {
+    "title": "Flutter Mobile Integration",
+    "summary": "Field-ready mobile application integrated with backend systems.",
+    "detail": "Delivered cross-platform operations workflow for teams needing mobile-first access.",
+    "link": "#",
+    "logo": "Mobile",
+    "accent": "pink",
+    "image": ""
+  }
+]
