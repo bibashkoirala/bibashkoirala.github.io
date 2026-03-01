@@ -1,0 +1,117 @@
+﻿{
+  "site": {
+    "brand": "Bibash Koirala",
+    "hireText": "Hire Me"
+  },
+  "nav": [
+    { "label": "About", "href": "#about" },
+    { "label": "Education", "href": "#education" },
+    { "label": "Experience", "href": "#experience" },
+    { "label": "Projects", "href": "#projects" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  "hero": {
+    "title": "Digital systems with real impact.",
+    "description": "Backend Developer and IT Officer working on e-governance, API architecture, and practical automation for public and private organizations.",
+    "image": "assets/images/profile-pic.jpg",
+    "actions": [
+      { "label": "View Timeline", "href": "#experience", "style": "primary" },
+      { "label": "Download CV", "href": "assets/docs/resume-example.pdf", "style": "soft", "external": true }
+    ]
+  },
+  "about": {
+    "title": "Secret About Me",
+    "image": "assets/images/about-pic.jpg",
+    "paragraphs": [
+      "I convert manual workflows into clean digital systems. My main strengths are backend delivery, API design, and practical execution for local government and organizational teams.",
+      "I currently serve as Information Technology Officer at Chulachuli Rural Municipality and deliver software services to clients in Nepal and abroad."
+    ]
+  },
+  "education": {
+    "title": "Education Journey (2010-2025)",
+    "subtitle": "Scroll horizontally through the timeline. The bubble animates each milestone.",
+    "items": [
+      { "year": "2010", "title": "Joined school education", "institute": "Shree Local School", "message": "Joined school level foundation studies." },
+      { "year": "2012", "title": "Primary completed", "institute": "Shree Local School", "message": "Completed primary level and moved to lower secondary." },
+      { "year": "2015", "title": "Lower secondary completed", "institute": "Community School", "message": "Completed lower secondary level and continued higher school studies." },
+      { "year": "2017", "title": "SEE completed", "institute": "Secondary School", "message": "Completed SEE level with computer and science interest." },
+      { "year": "2019", "title": "+2 completed", "institute": "Higher Secondary Institute", "message": "Completed +2 level and advanced toward computing track." },
+      { "year": "2021", "title": "Technical specialization phase", "institute": "Professional Training + Projects", "message": "Focused on practical computing skills, databases, and systems." },
+      { "year": "2023", "title": "Applied learning with professional work", "institute": "Continuous Development", "message": "Continued advanced learning while working in government IT systems." },
+      { "year": "2025", "title": "Advanced ongoing education", "institute": "Self + Industry Learning", "message": "Ongoing upskilling in AI automation, architecture, and governance tech." }
+    ]
+  },
+  "experience": {
+    "title": "Experience, Projects, and Skills Timeline",
+    "subtitle": "Animated dot grows from center and reveals milestones as you scroll.",
+    "items": [
+      { "side": "left", "title": "Jan 2022 | Municipal Digital Profile", "description": "Built structured digital profiles for rural municipality operations." },
+      { "side": "right", "title": "Aug 2022 | Inventory System", "description": "Django-based stock and supplier management with process control." },
+      { "side": "left", "title": "Feb 2023 | E-Governance API", "description": "REST APIs for municipal services and inter-department data flow." },
+      { "side": "right", "title": "Nov 2023 | Flutter App Integration", "description": "Cross-platform client integrated with backend for field usability." },
+      { "side": "left", "title": "2024 | Core Skills Consolidation", "description": "Django, REST API, Flutter, PostgreSQL, and automation workflows." },
+      { "side": "right", "title": "2025 | IT Officer + International Delivery", "description": "Government IT leadership plus services for Nepal, Denmark, and Australia." }
+    ]
+  },
+  "projects": {
+    "title": "My Projects and Consultant Services",
+    "subtitle": "Add or edit up to 10 items in data/projects.json with client and product names."
+  },
+  "ticker": [
+    "Backend Engineering",
+    "Django",
+    "REST API",
+    "E-Governance",
+    "Flutter",
+    "PostgreSQL",
+    "Automation",
+    "Digital Governance",
+    "System Design",
+    "Public Service Tech"
+  ],
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "We deliver practical digital systems with quality, speed, and clear communication.",
+    "items": [
+      { "icon": "P", "iconStyle": "green", "title": "Phone", "lines": ["+977 9814963098"] },
+      { "icon": "M", "iconStyle": "pink", "title": "E-Mail", "lines": ["bibashkoirala78@gmail.com", "hello@bibashkoirala.com.np"] },
+      { "icon": "A", "iconStyle": "green", "title": "Address", "lines": ["Ilam, Nepal"] }
+    ],
+    "form": {
+      "title": "Have Any Project? Say Hello....",
+      "fields": [
+        { "type": "text", "placeholder": "Enter your full name here" },
+        { "type": "email", "placeholder": "Enter your email here" },
+        { "type": "textarea", "placeholder": "Enter your message here" }
+      ],
+      "button": "Send Message"
+    }
+  },
+  "footer": {
+    "columns": [
+      {
+        "title": "Bibash Koirala",
+        "text": "Backend Developer and IT Officer building digital governance products and scalable platforms."
+      },
+      {
+        "title": "Contact",
+        "text": "For quick questions:",
+        "links": [
+          { "label": "bibashkoirala78@gmail.com", "href": "mailto:bibashkoirala78@gmail.com" }
+        ]
+      },
+      {
+        "title": "Social",
+        "social": true,
+        "links": [
+          { "label": "GitHub", "href": "https://github.com/" },
+          { "label": "LinkedIn", "href": "https://www.linkedin.com/" }
+        ]
+      }
+    ],
+    "copyright": "2026 | All Rights Reserved by Bibash Koirala",
+    "bottomLinks": [
+      { "label": "Top", "href": "#top" }
+    ]
+  }
+}

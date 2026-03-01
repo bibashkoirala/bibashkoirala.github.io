@@ -16,36 +16,24 @@
 
   <header class="hero-wrap" id="top">
     <nav class="top-nav">
-      <a class="brand" href="#top">Bibash Koirala</a>
+      <a class="brand" id="brand-link" href="#top">Bibash Koirala</a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="menu">Menu</button>
-      <ul id="menu" class="menu">
-        <li><a href="#about">About</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <a class="hire-btn" href="#contact">Hire Me</a>
+      <ul id="menu" class="menu"></ul>
+      <a class="hire-btn" id="hire-btn" href="#contact">Hire Me</a>
     </nav>
 
     <section class="hero section-inner">
       <div class="hero-copy reveal">
-        <h1>Digital systems with real impact.</h1>
-        <p>
-          Backend Developer and IT Officer working on e-governance, API architecture,
-          and practical automation for public and private organizations.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#experience">View Timeline</a>
-          <a class="btn btn-soft" href="assets/docs/resume-example.pdf" target="_blank" rel="noopener">Download CV</a>
-        </div>
+        <h1 id="hero-title"></h1>
+        <p id="hero-description"></p>
+        <div class="hero-actions" id="hero-actions"></div>
       </div>
 
       <div class="hero-photo reveal">
         <div class="shape shape-red"></div>
         <div class="shape shape-green"></div>
         <div class="shape shape-line"></div>
-        <img src="assets/images/profile-pic.jpg" alt="Bibash Koirala" />
+        <img id="hero-image" src="assets/images/profile-pic.jpg" alt="Profile photo" />
       </div>
     </section>
   </header>
@@ -54,18 +42,12 @@
     <div class="section-inner about-grid">
       <div class="about-photo reveal">
         <div class="shape shape-red small"></div>
-        <img src="assets/images/about-pic.jpg" alt="About Bibash" />
+        <img id="about-image" src="assets/images/about-pic.jpg" alt="About" />
       </div>
       <div class="about-copy reveal">
-        <h2>Secret About Me</h2>
-        <p>
-          I convert manual workflows into clean digital systems. My main strengths are backend delivery,
-          API design, and practical execution for local government and organizational teams.
-        </p>
-        <p>
-          I currently serve as Information Technology Officer at Chulachuli Rural Municipality and deliver
-          software services to clients in Nepal and abroad.
-        </p>
+        <h2 id="about-title"></h2>
+        <p id="about-paragraph-1"></p>
+        <p id="about-paragraph-2"></p>
       </div>
     </div>
   </section>
@@ -73,119 +55,31 @@
   <section class="education-block" id="education">
     <div class="section-inner">
       <div class="section-head reveal">
-        <h2>Education Journey (2010-2025)</h2>
-        <p>Scroll horizontally through the timeline. The bubble animates each milestone.</p>
+        <h2 id="education-title"></h2>
+        <p id="education-subtitle"></p>
       </div>
 
       <div class="edu-chat reveal" id="edu-chat">
-        <span class="chat-year" id="chat-year">2010</span>
-        <p id="chat-text">Joined school level foundation studies.</p>
+        <span class="chat-year" id="chat-year"></span>
+        <p id="chat-text"></p>
       </div>
 
-      <div class="edu-scroller" id="edu-scroller" aria-label="Education timeline">
-        <article class="edu-card is-active" data-year="2010" data-message="Joined school level foundation studies.">
-          <h3>2010</h3>
-          <p>Joined school education</p>
-          <span>Shree Local School</span>
-        </article>
-        <article class="edu-card" data-year="2012" data-message="Completed primary level and moved to lower secondary.">
-          <h3>2012</h3>
-          <p>Primary completed</p>
-          <span>Shree Local School</span>
-        </article>
-        <article class="edu-card" data-year="2015" data-message="Completed lower secondary level and continued higher school studies.">
-          <h3>2015</h3>
-          <p>Lower secondary completed</p>
-          <span>Community School</span>
-        </article>
-        <article class="edu-card" data-year="2017" data-message="Completed SEE level with computer and science interest.">
-          <h3>2017</h3>
-          <p>SEE completed</p>
-          <span>Secondary School</span>
-        </article>
-        <article class="edu-card" data-year="2019" data-message="Completed +2 level and advanced toward computing track.">
-          <h3>2019</h3>
-          <p>+2 completed</p>
-          <span>Higher Secondary Institute</span>
-        </article>
-        <article class="edu-card" data-year="2021" data-message="Focused on practical computing skills, databases, and systems.">
-          <h3>2021</h3>
-          <p>Technical specialization phase</p>
-          <span>Professional Training + Projects</span>
-        </article>
-        <article class="edu-card" data-year="2023" data-message="Continued advanced learning while working in government IT systems.">
-          <h3>2023</h3>
-          <p>Applied learning with professional work</p>
-          <span>Continuous Development</span>
-        </article>
-        <article class="edu-card" data-year="2025" data-message="Ongoing upskilling in AI automation, architecture, and governance tech.">
-          <h3>2025</h3>
-          <p>Advanced ongoing education</p>
-          <span>Self + Industry Learning</span>
-        </article>
-      </div>
+      <div class="edu-scroller" id="edu-scroller" aria-label="Education timeline"></div>
     </div>
   </section>
 
   <section class="experience-block" id="experience">
     <div class="section-inner">
       <div class="section-head reveal">
-        <h2>Experience, Projects, and Skills Timeline</h2>
-        <p>Animated dot grows from center and reveals milestones as you scroll.</p>
+        <h2 id="experience-title"></h2>
+        <p id="experience-subtitle"></p>
       </div>
 
       <div class="xp-timeline" id="xp-timeline">
         <div class="xp-line" id="xp-line">
           <div class="xp-progress" id="xp-progress"></div>
         </div>
-
-        <article class="xp-item left reveal">
-          <span class="xp-dot"></span>
-          <div class="xp-card">
-            <h3>Jan 2022 | Municipal Digital Profile</h3>
-            <p>Built structured digital profiles for rural municipality operations.</p>
-          </div>
-        </article>
-
-        <article class="xp-item right reveal">
-          <span class="xp-dot"></span>
-          <div class="xp-card">
-            <h3>Aug 2022 | Inventory System</h3>
-            <p>Django-based stock and supplier management with process control.</p>
-          </div>
-        </article>
-
-        <article class="xp-item left reveal">
-          <span class="xp-dot"></span>
-          <div class="xp-card">
-            <h3>Feb 2023 | E-Governance API</h3>
-            <p>REST APIs for municipal services and inter-department data flow.</p>
-          </div>
-        </article>
-
-        <article class="xp-item right reveal">
-          <span class="xp-dot"></span>
-          <div class="xp-card">
-            <h3>Nov 2023 | Flutter App Integration</h3>
-            <p>Cross-platform client integrated with backend for field usability.</p>
-          </div>
-        </article>
-
-        <article class="xp-item left reveal">
-          <span class="xp-dot"></span>
-          <div class="xp-card">
-            <h3>2024 | Core Skills Consolidation</h3>
-            <p>Django, REST API, Flutter, PostgreSQL, and automation workflows.</p>
-          </div>
-        </article>
-
-        <article class="xp-item right reveal">
-          <span class="xp-dot"></span>
-          <div class="xp-card">
-            <h3>2025 | IT Officer + International Delivery</h3>
-            <p>Government IT leadership plus services for Nepal, Denmark, and Australia.</p>
-          </div>
-        </article>
+        <div id="xp-items"></div>
       </div>
     </div>
   </section>
@@ -194,89 +88,48 @@
     <div class="section-inner">
       <div class="projects-head reveal">
         <div>
-          <h2>Case Study Projects</h2>
-          <p>Add or edit up to 10 projects in <code>data/projects.json</code> anytime, even after GitHub deploy.</p>
-        </div>
-        <div class="project-controls">
-          <button id="project-prev" aria-label="Previous projects">&#8249;</button>
-          <button id="project-next" aria-label="Next projects">&#8250;</button>
+          <h2 id="projects-title"></h2>
+          <p id="projects-subtitle"></p>
         </div>
       </div>
 
-      <div class="project-track" id="project-track" aria-live="polite"></div>
+      <div class="project-showcase" id="project-showcase" aria-live="polite">
+        <div class="project-side project-side-left" id="project-side-left"></div>
+        <article class="project-feature reveal" id="project-feature"></article>
+        <div class="project-side project-side-right" id="project-side-right"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ticker-block" aria-label="Technology and work keywords">
+    <div class="ticker">
+      <div class="ticker-track" id="ticker-track"></div>
     </div>
   </section>
 
   <section class="contact-block" id="contact">
     <div class="section-inner">
       <div class="section-head reveal">
-        <h2>Get In Touch</h2>
-        <p>We deliver practical digital systems with quality, speed, and clear communication.</p>
+        <h2 id="contact-title"></h2>
+        <p id="contact-subtitle"></p>
       </div>
       <div class="contact-grid">
-        <div class="contact-info reveal">
-          <article class="contact-item">
-            <span class="ci-icon ci-icon-green">P</span>
-            <div>
-              <h3>Phone</h3>
-              <p>+977 9814963098</p>
-            </div>
-          </article>
-          <article class="contact-item">
-            <span class="ci-icon ci-icon-pink">M</span>
-            <div>
-              <h3>E-Mail</h3>
-              <p>bibashkoirala78@gmail.com</p>
-              <p>hello@bibashkoirala.com.np</p>
-            </div>
-          </article>
-          <article class="contact-item">
-            <span class="ci-icon ci-icon-green">A</span>
-            <div>
-              <h3>Address</h3>
-              <p>Ilam, Nepal</p>
-            </div>
-          </article>
-        </div>
-        <form class="contact-form reveal">
-          <h3>Have Any Project? Say Hello....</h3>
-          <div class="input-row">
-            <input type="text" placeholder="Enter your full name here" />
-            <input type="email" placeholder="Enter your email here" />
-          </div>
-          <div class="input-row single">
-            <textarea rows="4" placeholder="Enter your message here"></textarea>
-          </div>
-          <button type="button">Send Message</button>
+        <div class="contact-info reveal" id="contact-info"></div>
+        <form class="contact-form reveal" id="contact-form">
+          <h3 id="contact-form-title"></h3>
+          <div class="input-row" id="contact-row-1"></div>
+          <div class="input-row single" id="contact-row-2"></div>
+          <button type="button" id="contact-button">Send Message</button>
         </form>
       </div>
     </div>
   </section>
 
   <footer class="site-footer">
-    <div class="section-inner footer-top">
-      <article>
-        <h3>Bibash Koirala</h3>
-        <p>Backend Developer and IT Officer building digital governance products and scalable platforms.</p>
-      </article>
-      <article>
-        <h3>Contact</h3>
-        <p>For quick questions:</p>
-        <a href="mailto:bibashkoirala78@gmail.com">bibashkoirala78@gmail.com</a>
-      </article>
-      <article>
-        <h3>Social</h3>
-        <div class="footer-social">
-          <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-      </article>
-    </div>
+    <div class="section-inner footer-top" id="footer-top"></div>
     <div class="section-inner footer-bottom">
-      <p>2026 | All Rights Reserved by Bibash Koirala</p>
-      <div class="footer-links">
-        <a href="#top">Top</a>
-      </div>
+      <p id="footer-copyright"></p>
+      <div class="footer-links" id="footer-links"></div>
     </div>
   </footer>
 
