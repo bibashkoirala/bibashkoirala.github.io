@@ -388,6 +388,344 @@ function renderProjects(items) {
   observeReveals();
 }
 
+function initMagicCursor() {
+  const supportsFinePointer = window.matchMedia('(pointer: fine)').matches;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!supportsFinePointer || reducedMotion) return;
+
+  const layer = document.createElement('div');
+  layer.className = 'magic-cursor-layer';
+
+  const core = document.createElement('div');
+  core.className = 'magic-cursor-core';
+
+  const ring = document.createElement('div');
+  ring.className = 'magic-cursor-ring';
+
+  layer.appendChild(ring);
+  layer.appendChild(core);
+  document.body.appendChild(layer);
+
+  let x = window.innerWidth * 0.5;
+  let y = window.innerHeight * 0.5;
+  let tx = x;
+  let ty = y;
+  let rafId = 0;
+  let lastSparkTime = 0;
+  let lastSparkX = x;
+  let lastSparkY = y;
+
+  function spawnSpark(px, py) {
+    const spark = document.createElement('span');
+    spark.className = 'magic-cursor-spark';
+    spark.style.transform = `translate3d(${px}px, ${py}px, 0)`;
+    spark.style.animation = 'spark-fade 460ms ease-out forwards';
+    layer.appendChild(spark);
+    window.setTimeout(() => spark.remove(), 520);
+  }
+
+  function animate() {
+    x += (tx - x) * 0.23;
+    y += (ty - y) * 0.23;
+    core.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    ring.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    rafId = window.requestAnimationFrame(animate);
+  }
+
+  function handleMove(event) {
+    tx = event.clientX;
+    ty = event.clientY;
+
+    const now = performance.now();
+    const dx = tx - lastSparkX;
+    const dy = ty - lastSparkY;
+    const moved = Math.hypot(dx, dy);
+    if (moved > 14 && now - lastSparkTime > 34) {
+      spawnSpark(tx, ty);
+      lastSparkTime = now;
+      lastSparkX = tx;
+      lastSparkY = ty;
+    }
+
+    const interactive = event.target && event.target.closest && event.target.closest('a, button, input, textarea, select, [role="button"]');
+    ring.classList.toggle('is-active', Boolean(interactive));
+  }
+
+  function hideCursor() {
+    layer.style.opacity = '0';
+  }
+
+  function showCursor() {
+    layer.style.opacity = '1';
+  }
+
+  animate();
+
+  window.addEventListener('pointermove', handleMove, { passive: true });
+  window.addEventListener('pointerdown', () => ring.classList.add('is-active'));
+  window.addEventListener('pointerup', () => ring.classList.remove('is-active'));
+  window.addEventListener('blur', hideCursor);
+  window.addEventListener('focus', showCursor);
+  document.addEventListener('mouseleave', hideCursor);
+  document.addEventListener('mouseenter', showCursor);
+
+  window.addEventListener('beforeunload', () => {
+    if (rafId) window.cancelAnimationFrame(rafId);
+  });
+}
+
+function initStupaSketch() {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) return;
+
+  const footer = document.querySelector('.site-footer');
+  if (!footer) return;
+
+  const canvas = document.createElement('canvas');
+  canvas.className = 'mountain-line-layer';
+  footer.appendChild(canvas);
+
+  const ctx = canvas.getContext('2d', { alpha: true });
+  if (!ctx) return;
+
+  let width = 0;
+  let height = 0;
+  let dpr = 1;
+  let rafId = 0;
+
+  function resize() {
+    dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    width = footer.clientWidth;
+    height = 360;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function drawPolylineProgress(points, progress) {
+    const clamped = Math.max(0, Math.min(1, progress));
+    if (clamped <= 0 || points.length < 2) return;
+    const total = points.length - 1;
+    const scaled = clamped * total;
+    const whole = Math.floor(scaled);
+    const frac = scaled - whole;
+
+    ctx.beginPath();
+    ctx.moveTo(points[0][0] * width, points[0][1] * height);
+    for (let i = 1; i <= whole && i < points.length; i += 1) {
+      ctx.lineTo(points[i][0] * width, points[i][1] * height);
+    }
+    if (whole + 1 < points.length) {
+      const a = points[whole];
+      const b = points[whole + 1];
+      ctx.lineTo((a[0] + (b[0] - a[0]) * frac) * width, (a[1] + (b[1] - a[1]) * frac) * height);
+    }
+    ctx.stroke();
+  }
+
+  function drawArcProgress(cx, cy, r, start, end, progress) {
+    if (progress <= 0) return;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, start, start + (end - start) * Math.min(1, progress));
+    ctx.stroke();
+  }
+
+  function frame(time) {
+    const cycle = 10800;
+    const t = (time % cycle) / cycle;
+    const drawWindow = 0.78;
+    const fadeWindow = 0.12;
+    const progress = t < drawWindow ? t / drawWindow : 1;
+    const fade = t < (1 - fadeWindow) ? 1 : Math.max(0, 1 - (t - (1 - fadeWindow)) / fadeWindow);
+
+    ctx.clearRect(0, 0, width, height);
+    ctx.lineWidth = 2.2;
+    ctx.strokeStyle = `rgba(74, 224, 178, ${0.9 * fade})`;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.shadowColor = `rgba(74, 224, 178, ${0.34 * fade})`;
+    ctx.shadowBlur = 7;
+
+    const cx = width * 0.5;
+    const domeY = height * 0.69;
+    const domeR = Math.min(width, height) * 0.21;
+
+    const structures = [
+      [[0.17, 0.98], [0.83, 0.98], [0.83, 0.92], [0.17, 0.92], [0.17, 0.98]],
+      [[0.2, 0.92], [0.8, 0.92], [0.8, 0.86], [0.2, 0.86], [0.2, 0.92]],
+      [[0.24, 0.86], [0.76, 0.86], [0.76, 0.81], [0.24, 0.81], [0.24, 0.86]],
+      [[0.29, 0.81], [0.71, 0.81], [0.71, 0.77], [0.29, 0.77], [0.29, 0.81]],
+      [[0.36, 0.77], [0.64, 0.77], [0.64, 0.74], [0.36, 0.74], [0.36, 0.77]],
+      [[0.472, 0.59], [0.528, 0.59], [0.528, 0.64], [0.472, 0.64], [0.472, 0.59]],
+      [[0.452, 0.64], [0.548, 0.64], [0.548, 0.68], [0.452, 0.68], [0.452, 0.64]],
+      [[0.468, 0.56], [0.532, 0.56], [0.532, 0.59], [0.468, 0.59], [0.468, 0.56]],
+      [[0.478, 0.53], [0.522, 0.53], [0.522, 0.56], [0.478, 0.56], [0.478, 0.53]],
+      [[0.485, 0.53], [0.5, 0.39], [0.515, 0.53]],
+      [[0.49, 0.39], [0.51, 0.39], [0.51, 0.35], [0.49, 0.35], [0.49, 0.39]],
+      [[0.495, 0.35], [0.505, 0.35], [0.505, 0.31], [0.495, 0.31], [0.495, 0.35]],
+      [[0.5, 0.31], [0.5, 0.24]],
+      [[0.493, 0.24], [0.507, 0.24]],
+      [[0.46, 0.675], [0.49, 0.67], [0.52, 0.675]],
+      [[0.54, 0.675], [0.57, 0.67], [0.6, 0.675]],
+      [[0.505, 0.69], [0.498, 0.707], [0.512, 0.716]]
+    ];
+
+    const total = structures.length + 3;
+    structures.forEach((path, idx) => {
+      const local = Math.max(0, Math.min(1, progress * total - idx));
+      ctx.lineWidth = idx < 5 ? 2.5 : 2;
+      drawPolylineProgress(path, local);
+    });
+
+    const domePhase = Math.max(0, Math.min(1, progress * total - (total - 3)));
+    ctx.lineWidth = 2.3;
+    drawArcProgress(cx, domeY, domeR, Math.PI, Math.PI * 2, domePhase);
+
+    if (domePhase > 0.45) {
+      const panelPhase = Math.max(0, Math.min(1, (domePhase - 0.45) / 0.55));
+      ctx.lineWidth = 1.25;
+      for (let i = -5; i <= 5; i += 1) {
+        const px = cx + i * domeR * 0.16;
+        const pr = domeR * 0.12;
+        drawArcProgress(px, domeY + domeR * 0.02, pr, Math.PI, Math.PI * 2, panelPhase);
+      }
+    }
+
+    const prayerPhase = Math.max(0, Math.min(1, progress * total - (total - 2)));
+    const top = [0.5, 0.36];
+    const ribbons = [
+      [0.03, 0.85], [0.06, 0.8], [0.1, 0.75], [0.15, 0.7], [0.2, 0.66], [0.26, 0.62],
+      [0.74, 0.62], [0.8, 0.66], [0.85, 0.7], [0.9, 0.75], [0.94, 0.8], [0.97, 0.85]
+    ];
+    ctx.lineWidth = 1.15;
+    ribbons.forEach((end) => drawPolylineProgress([top, end], prayerPhase));
+
+    const stairPhase = Math.max(0, Math.min(1, progress * total - (total - 1)));
+    const stairs = [
+      [[0.515, 0.98], [0.55, 0.98], [0.55, 0.92], [0.515, 0.92], [0.515, 0.98]],
+      [[0.52, 0.92], [0.545, 0.92], [0.545, 0.88], [0.52, 0.88], [0.52, 0.92]],
+      [[0.524, 0.88], [0.541, 0.88], [0.541, 0.85], [0.524, 0.85], [0.524, 0.88]]
+    ];
+    ctx.lineWidth = 1.8;
+    stairs.forEach((s) => drawPolylineProgress(s, stairPhase));
+
+    const labelPhase = Math.max(0, Math.min(1, (progress - 0.86) / 0.14));
+    if (labelPhase > 0) {
+      ctx.font = `${Math.max(12, Math.floor(width * 0.015))}px "Sora", sans-serif`;
+      ctx.textAlign = 'right';
+      ctx.textBaseline = 'bottom';
+      ctx.fillStyle = `rgba(74, 224, 178, ${0.92 * fade * labelPhase})`;
+      ctx.fillText('Boudhanath Stupa, Nepal', width * 0.97, height * 0.965);
+    }
+
+    ctx.shadowBlur = 0;
+
+    rafId = window.requestAnimationFrame(frame);
+  }
+
+  resize();
+  rafId = window.requestAnimationFrame(frame);
+  window.addEventListener('resize', resize);
+  window.addEventListener('beforeunload', () => {
+    if (rafId) window.cancelAnimationFrame(rafId);
+  });
+}
+
+function initForegroundMountain() {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) return;
+
+  const canvas = document.createElement('canvas');
+  canvas.className = 'foreground-mountain-layer';
+  document.body.appendChild(canvas);
+
+  const ctx = canvas.getContext('2d', { alpha: true });
+  if (!ctx) return;
+
+  let width = 0;
+  let height = 0;
+  let dpr = 1;
+  let rafId = 0;
+
+  const mainPeak = [
+    [0.08, 0.9],
+    [0.2, 0.84],
+    [0.31, 0.75],
+    [0.43, 0.62],
+    [0.5, 0.46],
+    [0.56, 0.6],
+    [0.67, 0.74],
+    [0.8, 0.84],
+    [0.92, 0.9]
+  ];
+  const ridgeLeft = [
+    [0.27, 0.83],
+    [0.37, 0.72],
+    [0.45, 0.59],
+    [0.5, 0.46]
+  ];
+  const ridgeRight = [
+    [0.5, 0.46],
+    [0.57, 0.61],
+    [0.66, 0.75],
+    [0.75, 0.84]
+  ];
+
+  function resize() {
+    dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    width = window.innerWidth;
+    height = Math.max(260, Math.floor(window.innerHeight * 0.42));
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function drawPath(points, yDrift, lineWidth, alpha) {
+    ctx.beginPath();
+    points.forEach((p, idx) => {
+      const x = p[0] * width;
+      const y = p[1] * height + yDrift;
+      if (idx === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    });
+    ctx.lineWidth = lineWidth;
+    ctx.strokeStyle = `rgba(74, 224, 178, ${alpha})`;
+    ctx.stroke();
+  }
+
+  function frame(time) {
+    const t = time * 0.001;
+    const speedPulse = 0.5 + 0.5 * Math.sin(t * 0.7);
+    const brightnessPulse = 0.5 + 0.5 * Math.sin(t * 0.45 + 1.2);
+    const yDrift = Math.sin(t * (0.35 + speedPulse * 0.8)) * 7;
+    const alphaBase = 0.16 + brightnessPulse * 0.24;
+
+    ctx.clearRect(0, 0, width, height);
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.shadowColor = `rgba(74, 224, 178, ${alphaBase * 0.9})`;
+    ctx.shadowBlur = 10 + brightnessPulse * 8;
+
+    drawPath(mainPeak, yDrift, 2.6, alphaBase);
+    drawPath(ridgeLeft, yDrift * 0.9, 1.6, alphaBase * 0.74);
+    drawPath(ridgeRight, yDrift * 0.9, 1.6, alphaBase * 0.74);
+
+    ctx.shadowBlur = 0;
+    rafId = window.requestAnimationFrame(frame);
+  }
+
+  resize();
+  rafId = window.requestAnimationFrame(frame);
+  window.addEventListener('resize', resize);
+  window.addEventListener('beforeunload', () => {
+    if (rafId) window.cancelAnimationFrame(rafId);
+  });
+}
+
 async function loadProjects() {
   try {
     const response = await fetch('data/projects.json', { cache: 'no-store' });
@@ -412,3 +750,6 @@ async function loadSite() {
 }
 
 Promise.all([loadSite(), loadProjects()]);
+initMagicCursor();
+initForegroundMountain();
+initStupaSketch();
