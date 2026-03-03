@@ -410,7 +410,7 @@ function initMagicCursor() {
   if (reducedMotion) return;
 
   if (!supportsFinePointer && supportsCoarsePointer) {
-    initTouchCursorGlow();
+    initTouchMagicCursor();
     return;
   }
   if (!supportsFinePointer) return;
@@ -497,42 +497,97 @@ function initMagicCursor() {
   });
 }
 
-function initTouchCursorGlow() {
+function initTouchMagicCursor() {
   const layer = document.createElement('div');
   layer.className = 'magic-cursor-layer';
-  document.body.appendChild(layer);
-  let lastPulse = 0;
+  layer.style.opacity = '0';
 
-  function spawnPulse(x, y) {
+  const core = document.createElement('div');
+  core.className = 'magic-cursor-core';
+
+  const ring = document.createElement('div');
+  ring.className = 'magic-cursor-ring';
+
+  layer.appendChild(ring);
+  layer.appendChild(core);
+  document.body.appendChild(layer);
+
+  let x = window.innerWidth * 0.5;
+  let y = window.innerHeight * 0.5;
+  let tx = x;
+  let ty = y;
+  let rafId = 0;
+  let lastSparkTime = 0;
+  let lastSparkX = x;
+  let lastSparkY = y;
+  let hideTimer = 0;
+
+  function spawnSpark(px, py) {
     const spark = document.createElement('span');
     spark.className = 'magic-cursor-spark';
-    spark.style.width = '18px';
-    spark.style.height = '18px';
-    spark.style.margin = '-9px 0 0 -9px';
-    spark.style.left = `${x}px`;
-    spark.style.top = `${y}px`;
-    spark.style.animation = 'spark-fade 560ms ease-out forwards';
+    spark.style.left = `${px}px`;
+    spark.style.top = `${py}px`;
+    spark.style.animation = 'spark-fade 460ms ease-out forwards';
     layer.appendChild(spark);
-    window.setTimeout(() => spark.remove(), 620);
+    window.setTimeout(() => spark.remove(), 520);
+  }
+
+  function animate() {
+    x += (tx - x) * 0.23;
+    y += (ty - y) * 0.23;
+    core.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    ring.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    rafId = window.requestAnimationFrame(animate);
+  }
+
+  function setTouchPoint(touch) {
+    if (!touch) return;
+    tx = touch.clientX;
+    ty = touch.clientY;
   }
 
   function handleTouchMove(event) {
     const touch = event.touches && event.touches[0];
     if (!touch) return;
     const now = performance.now();
-    if (now - lastPulse < 42) return;
-    lastPulse = now;
-    spawnPulse(touch.clientX, touch.clientY);
+    setTouchPoint(touch);
+
+    const dx = tx - lastSparkX;
+    const dy = ty - lastSparkY;
+    const moved = Math.hypot(dx, dy);
+    if (moved > 14 && now - lastSparkTime > 34) {
+      spawnSpark(tx, ty);
+      lastSparkTime = now;
+      lastSparkX = tx;
+      lastSparkY = ty;
+    }
   }
 
   function handleTouchStart(event) {
     const touch = event.touches && event.touches[0];
     if (!touch) return;
-    spawnPulse(touch.clientX, touch.clientY);
+    if (hideTimer) window.clearTimeout(hideTimer);
+    setTouchPoint(touch);
+    layer.style.opacity = '1';
+    ring.classList.add('is-active');
+    spawnSpark(tx, ty);
   }
 
+  function handleTouchEnd() {
+    ring.classList.remove('is-active');
+    hideTimer = window.setTimeout(() => {
+      layer.style.opacity = '0';
+    }, 120);
+  }
+
+  animate();
   window.addEventListener('touchstart', handleTouchStart, { passive: true });
   window.addEventListener('touchmove', handleTouchMove, { passive: true });
+  window.addEventListener('touchend', handleTouchEnd, { passive: true });
+  window.addEventListener('touchcancel', handleTouchEnd, { passive: true });
+  window.addEventListener('beforeunload', () => {
+    if (rafId) window.cancelAnimationFrame(rafId);
+  });
 }
 
 function initStupaSketch() {
