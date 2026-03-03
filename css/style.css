@@ -224,14 +224,23 @@ h1, h2, h3, .brand { font-family: "Sora", sans-serif; letter-spacing: -0.02em; }
 .project-showcase {
   margin-top: 1.2rem;
   display: grid;
-  grid-template-columns: 1fr minmax(320px, 420px) 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: start;
   gap: 1rem;
 }
 
-.project-side {
+.project-column {
   display: grid;
   gap: 0.8rem;
+  align-content: start;
+}
+
+.project-column-center {
+  padding-top: clamp(3.2rem, 8vw, 5.3rem);
+}
+
+.project-column .project-tile.is-upper {
+  margin-top: 0;
 }
 
 .project-tile,
@@ -244,12 +253,8 @@ h1, h2, h3, .brand { font-family: "Sora", sans-serif; letter-spacing: -0.02em; }
   box-shadow: 0 12px 24px rgba(21, 41, 48, 0.07);
 }
 
-.project-side .project-tile:nth-child(even) {
-  transform: translateY(20px);
-}
-
 .project-feature {
-  min-height: 520px;
+  min-height: 470px;
   padding: 1rem;
   display: grid;
   gap: 0.75rem;
@@ -267,7 +272,7 @@ h1, h2, h3, .brand { font-family: "Sora", sans-serif; letter-spacing: -0.02em; }
 }
 
 .project-tile {
-  min-height: 150px;
+  min-height: 140px;
   padding: 0.8rem;
   display: grid;
   gap: 0.4rem;
@@ -652,7 +657,7 @@ h1, h2, h3, .brand { font-family: "Sora", sans-serif; letter-spacing: -0.02em; }
   .xp-item .xp-dot, .xp-item.left .xp-dot, .xp-item.right .xp-dot { left: 10px; right: auto; }
   .projects-head { flex-direction: column; align-items: flex-start; }
   .project-showcase { grid-template-columns: 1fr; }
-  .project-side .project-tile:nth-child(even) { transform: none; }
+  .project-column-center { padding-top: 0; }
   .project-feature { min-height: auto; }
   .footer-top { grid-template-columns: 1fr; }
 }

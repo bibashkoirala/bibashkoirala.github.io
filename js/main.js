@@ -1,10 +1,7 @@
-﻿const menuButton = document.querySelector('.menu-toggle');
+const menuButton = document.querySelector('.menu-toggle');
 const menu = document.querySelector('.menu');
 
 const projectShowcase = document.getElementById('project-showcase');
-const projectFeature = document.getElementById('project-feature');
-const projectSideLeft = document.getElementById('project-side-left');
-const projectSideRight = document.getElementById('project-side-right');
 
 const fallbackSiteData = {
   site: { brand: 'Bibash Koirala', hireText: 'Hire Me' },
@@ -314,7 +311,9 @@ function updateTimelineProgress() {
 window.addEventListener('scroll', updateTimelineProgress);
 window.addEventListener('resize', updateTimelineProgress);
 
-function projectCardMarkup(item, index, featured = false) {
+function projectCardMarkup(item, index, options = {}) {
+  const featured = Boolean(options.featured);
+  const layoutClass = options.layoutClass ? ` ${options.layoutClass}` : '';
   const num = String(index + 1).padStart(2, '0');
   const accentClass = item.accent === 'green' ? 'green' : 'pink';
   const hasExternalLink = item.link && item.link !== '#';
@@ -325,7 +324,7 @@ function projectCardMarkup(item, index, featured = false) {
   const imageHtml = item.image ? `<img class="project-image" src="${item.image}" alt="${item.title} preview" />` : '';
   const client = item.client ? `<span class="project-client">Client: ${item.client}</span>` : '';
   const product = item.product ? `<span class="project-product">Product: ${item.product}</span>` : '';
-  const wrapperClass = featured ? 'project-feature reveal' : 'project-tile reveal';
+  const wrapperClass = featured ? `project-feature reveal${layoutClass}` : `project-tile reveal${layoutClass}`;
 
   return `
     <article class="${wrapperClass}">
@@ -349,32 +348,48 @@ function projectCardMarkup(item, index, featured = false) {
 }
 
 function renderProjects(items) {
-  if (!projectShowcase || !projectFeature || !projectSideLeft || !projectSideRight) return;
-  const projects = items.slice(0, 10);
+  if (!projectShowcase) return;
+  const projects = items.slice(0, 30);
   if (!projects.length) {
-    projectFeature.innerHTML = '<h3>No projects added</h3><p>Add entries in <code>data/projects.json</code>.</p>';
-    projectSideLeft.innerHTML = '';
-    projectSideRight.innerHTML = '';
+    projectShowcase.innerHTML = '<article class="project-feature"><h3>No projects added</h3><p>Add entries in <code>data/projects.json</code>.</p></article>';
     return;
   }
 
-  const featuredProject = projects[0];
-  const remaining = projects.slice(1);
   const leftProjects = [];
+  const centerProjects = [];
   const rightProjects = [];
 
-  remaining.forEach((project, idx) => {
-    const entry = { ...project, _idx: idx + 1 };
-    if (idx % 2 === 0) leftProjects.push(entry);
-    else rightProjects.push(entry);
+  projects.forEach((project, idx) => {
+    const entry = { ...project, _idx: idx };
+    if (idx === 0) {
+      centerProjects.push({ ...entry, _featured: true });
+      return;
+    }
+    if (idx === 1) {
+      leftProjects.push({ ...entry, _upper: true });
+      return;
+    }
+    if (idx === 2) {
+      rightProjects.push({ ...entry, _upper: true });
+      return;
+    }
+
+    const cycle = ['left', 'right', 'center'][(idx - 3) % 3];
+    if (cycle === 'left') leftProjects.push(entry);
+    else if (cycle === 'right') rightProjects.push(entry);
+    else centerProjects.push(entry);
   });
 
-  projectFeature.outerHTML = projectCardMarkup(featuredProject, 0, true);
-  const refreshedFeature = document.getElementById('project-feature') || document.querySelector('.project-feature');
-  if (refreshedFeature && refreshedFeature.id !== 'project-feature') refreshedFeature.id = 'project-feature';
+  const leftHtml = leftProjects.map((project) => projectCardMarkup(project, project._idx, { layoutClass: project._upper ? 'is-upper' : '' })).join('');
+  const centerHtml = centerProjects.map((project) => projectCardMarkup(project, project._idx, { featured: Boolean(project._featured) })).join('');
+  const rightHtml = rightProjects.map((project) => projectCardMarkup(project, project._idx, { layoutClass: project._upper ? 'is-upper' : '' })).join('');
 
-  projectSideLeft.innerHTML = leftProjects.map((project) => projectCardMarkup(project, project._idx, false)).join('');
-  projectSideRight.innerHTML = rightProjects.map((project) => projectCardMarkup(project, project._idx, false)).join('');
+  projectShowcase.innerHTML = `
+    <div class="project-column project-column-left" id="project-side-left">${leftHtml}</div>
+    <div class="project-column project-column-center" id="project-center">${centerHtml}</div>
+    <div class="project-column project-column-right" id="project-side-right">${rightHtml}</div>
+  `;
+  projectShowcase.dataset.count = String(projects.length);
 
   document.querySelectorAll('#project-showcase .project-readmore').forEach((button) => {
     button.addEventListener('click', () => {
@@ -811,3 +826,4 @@ Promise.all([loadSite(), loadProjects()]);
 initMagicCursor();
 initForegroundMountain();
 initStupaSketch();
+
