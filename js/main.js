@@ -390,8 +390,15 @@ function renderProjects(items) {
 
 function initMagicCursor() {
   const supportsFinePointer = window.matchMedia('(pointer: fine)').matches;
+  const supportsCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!supportsFinePointer || reducedMotion) return;
+  if (reducedMotion) return;
+
+  if (!supportsFinePointer && supportsCoarsePointer) {
+    initTouchCursorGlow();
+    return;
+  }
+  if (!supportsFinePointer) return;
 
   const layer = document.createElement('div');
   layer.className = 'magic-cursor-layer';
@@ -472,6 +479,43 @@ function initMagicCursor() {
   window.addEventListener('beforeunload', () => {
     if (rafId) window.cancelAnimationFrame(rafId);
   });
+}
+
+function initTouchCursorGlow() {
+  const layer = document.createElement('div');
+  layer.className = 'magic-cursor-layer';
+  document.body.appendChild(layer);
+  let lastPulse = 0;
+
+  function spawnPulse(x, y) {
+    const spark = document.createElement('span');
+    spark.className = 'magic-cursor-spark';
+    spark.style.width = '18px';
+    spark.style.height = '18px';
+    spark.style.margin = '-9px 0 0 -9px';
+    spark.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    spark.style.animation = 'spark-fade 560ms ease-out forwards';
+    layer.appendChild(spark);
+    window.setTimeout(() => spark.remove(), 620);
+  }
+
+  function handleTouchMove(event) {
+    const touch = event.touches && event.touches[0];
+    if (!touch) return;
+    const now = performance.now();
+    if (now - lastPulse < 42) return;
+    lastPulse = now;
+    spawnPulse(touch.clientX, touch.clientY);
+  }
+
+  function handleTouchStart(event) {
+    const touch = event.touches && event.touches[0];
+    if (!touch) return;
+    spawnPulse(touch.clientX, touch.clientY);
+  }
+
+  window.addEventListener('touchstart', handleTouchStart, { passive: true });
+  window.addEventListener('touchmove', handleTouchMove, { passive: true });
 }
 
 function initStupaSketch() {
@@ -684,35 +728,49 @@ function initForegroundMountain() {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
 
-  function drawPath(points, yDrift, lineWidth, alpha) {
+  function drawPathProgress(points, progress, lineWidth, alpha) {
+    const clamped = Math.max(0, Math.min(1, progress));
+    if (clamped <= 0 || points.length < 2) return;
+
+    const total = points.length - 1;
+    const scaled = clamped * total;
+    const whole = Math.floor(scaled);
+    const frac = scaled - whole;
+
     ctx.beginPath();
-    points.forEach((p, idx) => {
-      const x = p[0] * width;
-      const y = p[1] * height + yDrift;
-      if (idx === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
-    });
+    ctx.moveTo(points[0][0] * width, points[0][1] * height);
+    for (let i = 1; i <= whole && i < points.length; i += 1) {
+      ctx.lineTo(points[i][0] * width, points[i][1] * height);
+    }
+    if (whole + 1 < points.length) {
+      const a = points[whole];
+      const b = points[whole + 1];
+      ctx.lineTo((a[0] + (b[0] - a[0]) * frac) * width, (a[1] + (b[1] - a[1]) * frac) * height);
+    }
+
     ctx.lineWidth = lineWidth;
     ctx.strokeStyle = `rgba(74, 224, 178, ${alpha})`;
     ctx.stroke();
   }
 
   function frame(time) {
-    const t = time * 0.001;
-    const speedPulse = 0.5 + 0.5 * Math.sin(t * 0.7);
-    const brightnessPulse = 0.5 + 0.5 * Math.sin(t * 0.45 + 1.2);
-    const yDrift = Math.sin(t * (0.35 + speedPulse * 0.8)) * 7;
-    const alphaBase = 0.16 + brightnessPulse * 0.24;
+    const cycle = 6000;
+    const t = (time % cycle) / cycle;
+    const drawWindow = 0.82;
+    const progress = t < drawWindow ? t / drawWindow : 1;
+    const alphaBase = 0.44;
+    const leftRidgeProgress = Math.max(0, Math.min(1, (progress - 0.18) / 0.82));
+    const rightRidgeProgress = Math.max(0, Math.min(1, (progress - 0.3) / 0.7));
 
     ctx.clearRect(0, 0, width, height);
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
-    ctx.shadowColor = `rgba(74, 224, 178, ${alphaBase * 0.9})`;
-    ctx.shadowBlur = 10 + brightnessPulse * 8;
+    ctx.shadowColor = `rgba(74, 224, 178, ${alphaBase * 0.7})`;
+    ctx.shadowBlur = 10;
 
-    drawPath(mainPeak, yDrift, 2.6, alphaBase);
-    drawPath(ridgeLeft, yDrift * 0.9, 1.6, alphaBase * 0.74);
-    drawPath(ridgeRight, yDrift * 0.9, 1.6, alphaBase * 0.74);
+    drawPathProgress(mainPeak, progress, 2.6, alphaBase);
+    drawPathProgress(ridgeLeft, leftRidgeProgress, 1.7, alphaBase * 0.78);
+    drawPathProgress(ridgeRight, rightRidgeProgress, 1.7, alphaBase * 0.78);
 
     ctx.shadowBlur = 0;
     rafId = window.requestAnimationFrame(frame);

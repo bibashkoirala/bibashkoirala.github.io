@@ -584,7 +584,7 @@ h1, h2, h3, .brand { font-family: "Sora", sans-serif; letter-spacing: -0.02em; }
   height: 62vh;
   pointer-events: none;
   z-index: 12;
-  opacity: 0.38;
+  opacity: 0.5;
 }
 
 .magic-cursor-core,
