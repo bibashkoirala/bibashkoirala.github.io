@@ -12,7 +12,7 @@
   ],
   "hero": {
     "title": "Digital systems with real impact.",
-    "description": "Backend Developer and IT Officer working on e-governance, API architecture, and practical automation for public and private organizations.",
+    "description": "Developer and IT Officer working on e-governance, API architecture, and practical automation for public and private organizations.",
     "image": "assets/images/profile-pic.jpg",
     "actions": [
       { "label": "View Timeline", "href": "#experience", "style": "primary" },
@@ -29,33 +29,33 @@
   },
   "education": {
     "title": "Education Journey (2010-2025)",
-    "subtitle": "Scroll horizontally through the timeline. The bubble animates each milestone.",
+    "subtitle": "Scroll horizontally through the timeline. Get information about my each milestone.",
     "items": [
-      { "year": "2010", "title": "Joined school education", "institute": "Shree Local School", "message": "Joined school level foundation studies." },
-      { "year": "2012", "title": "Primary completed", "institute": "Shree Local School", "message": "Completed primary level and moved to lower secondary." },
-      { "year": "2015", "title": "Lower secondary completed", "institute": "Community School", "message": "Completed lower secondary level and continued higher school studies." },
-      { "year": "2017", "title": "SEE completed", "institute": "Secondary School", "message": "Completed SEE level with computer and science interest." },
-      { "year": "2019", "title": "+2 completed", "institute": "Higher Secondary Institute", "message": "Completed +2 level and advanced toward computing track." },
-      { "year": "2021", "title": "Technical specialization phase", "institute": "Professional Training + Projects", "message": "Focused on practical computing skills, databases, and systems." },
-      { "year": "2023", "title": "Applied learning with professional work", "institute": "Continuous Development", "message": "Continued advanced learning while working in government IT systems." },
-      { "year": "2025", "title": "Advanced ongoing education", "institute": "Self + Industry Learning", "message": "Ongoing upskilling in AI automation, architecture, and governance tech." }
+      { "year": "2005", "title": "Joined school education", "institute": "Shree New Sunflower English Boarding School", "message": "Joined school level foundation studies." },
+      { "year": "2013", "title": "Lower Secondary completed", "institute": "Wonderland English Boarding school", "message": "Completed lower secondary level and moved to Damak for class 9 and 10." },
+      { "year": "2015", "title": "SEE completed", "institute": "Siddhartha Boarding Higher Secondary School", "message": "Completed SEE level with Math and science interest." },
+      { "year": "2017", "title": "+2 completed, Nepal Examination Board (NEB)", "institute": "Siddhartha Boarding Higher Secondary School", "message": "Completed +2 level and advanced toward Science as a main track." },
+      { "year": "2018", "title": "Bachelor Started", "institute": "Shreeyantra College (aff. Tribhuvan University)", "message": "Started Bachelor and advanced toward computing track." },
+      { "year": "2021", "title": "Technical specialization phase", "institute": "Self + Projects", "message": "Focused on practical computing skills, databases, and systems." },
+      { "year": "2022", "title": "Applied learning with professional work", "institute": "Continuous Development", "message": "Continued advanced learning while working in government IT systems." },
+      { "year": "2023", "title": "Bachelor Completed", "institute": "Shreeyantra College (aff. TU)", "message": "Bachelor of Science in Computer Science and Information Technology (B. Sc. CSIT), affiliated to T.U. is the course composition of 4 years IT and computer courses." }
     ]
   },
   "experience": {
     "title": "Experience, Projects, and Skills Timeline",
-    "subtitle": "Animated dot grows from center and reveals milestones as you scroll.",
+    "subtitle": "How i describe myself?",
     "items": [
       { "side": "left", "title": "Jan 2022 | Municipal Digital Profile", "description": "Built structured digital profiles for rural municipality operations." },
       { "side": "right", "title": "Aug 2022 | Inventory System", "description": "Django-based stock and supplier management with process control." },
       { "side": "left", "title": "Feb 2023 | E-Governance API", "description": "REST APIs for municipal services and inter-department data flow." },
       { "side": "right", "title": "Nov 2023 | Flutter App Integration", "description": "Cross-platform client integrated with backend for field usability." },
       { "side": "left", "title": "2024 | Core Skills Consolidation", "description": "Django, REST API, Flutter, PostgreSQL, and automation workflows." },
-      { "side": "right", "title": "2025 | IT Officer + International Delivery", "description": "Government IT leadership plus services for Nepal, Denmark, and Australia." }
+      { "side": "right", "title": "2024 | IT Officer + International Delivery", "description": "Government IT leadership plus services for Nepal, Denmark, and India." }
     ]
   },
   "projects": {
     "title": "My Projects and Consultant Services",
-    "subtitle": "Add or edit up to 10 items in data/projects.json with client and product names."
+    "subtitle": "with client and product names."
   },
   "ticker": [
     "Backend Engineering",
@@ -74,7 +74,7 @@
     "subtitle": "We deliver practical digital systems with quality, speed, and clear communication.",
     "items": [
       { "icon": "P", "iconStyle": "green", "title": "Phone", "lines": ["+977 9814963098"] },
-      { "icon": "M", "iconStyle": "pink", "title": "E-Mail", "lines": ["bibashkoirala78@gmail.com", "hello@bibashkoirala.com.np"] },
+      { "icon": "M", "iconStyle": "pink", "title": "E-Mail", "lines": ["bibashkoirala78@gmail.com", "bibash.itochulachuli@gmail.com"] },
       { "icon": "A", "iconStyle": "green", "title": "Address", "lines": ["Ilam, Nepal"] }
     ],
     "form": {
@@ -91,7 +91,7 @@
     "columns": [
       {
         "title": "Bibash Koirala",
-        "text": "Backend Developer and IT Officer building digital governance products and scalable platforms."
+        "text": "Developer and IT Officer building digital governance products and scalable platforms."
       },
       {
         "title": "Contact",
@@ -104,8 +104,8 @@
         "title": "Social",
         "social": true,
         "links": [
-          { "label": "GitHub", "href": "https://github.com/" },
-          { "label": "LinkedIn", "href": "https://www.linkedin.com/" }
+          { "label": "GitHub", "href": "https://github.com/bibashkoirala/" },
+          { "label": "LinkedIn", "href": "https://www.linkedin.com/in/bibash-jr-koirala/" }
         ]
       }
     ],
