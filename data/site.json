@@ -16,7 +16,7 @@
     "image": "assets/images/profile-pic.jpg",
     "actions": [
       { "label": "View Timeline", "href": "#experience", "style": "primary" },
-      { "label": "Download CV", "href": "assets/docs/resume-example.pdf", "style": "soft", "external": true }
+      { "label": "Download CV", "href": "assets/docs/CV_Bibash.pdf", "style": "soft", "external": true }
     ]
   },
   "about": {
