@@ -440,7 +440,8 @@ function initMagicCursor() {
   function spawnSpark(px, py) {
     const spark = document.createElement('span');
     spark.className = 'magic-cursor-spark';
-    spark.style.transform = `translate3d(${px}px, ${py}px, 0)`;
+    spark.style.left = `${px}px`;
+    spark.style.top = `${py}px`;
     spark.style.animation = 'spark-fade 460ms ease-out forwards';
     layer.appendChild(spark);
     window.setTimeout(() => spark.remove(), 520);
@@ -508,7 +509,8 @@ function initTouchCursorGlow() {
     spark.style.width = '18px';
     spark.style.height = '18px';
     spark.style.margin = '-9px 0 0 -9px';
-    spark.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    spark.style.left = `${x}px`;
+    spark.style.top = `${y}px`;
     spark.style.animation = 'spark-fade 560ms ease-out forwards';
     layer.appendChild(spark);
     window.setTimeout(() => spark.remove(), 620);
