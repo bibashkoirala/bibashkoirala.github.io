@@ -18,7 +18,7 @@ const fallbackSiteData = {
     image: 'assets/images/profile-pic.jpg',
     actions: [
       { label: 'View Timeline', href: '#experience', style: 'primary' },
-      { label: 'Download CV', href: 'assets/docs/resume-example.pdf', style: 'soft', external: true }
+      { label: 'Download CV', href: 'assets/docs/CV_Bibash.pdf', style: 'soft', external: true }
     ]
   },
   about: {
@@ -88,7 +88,7 @@ const fallbackProjects = [
     client: 'Chulachuli RM',
     product: 'Profile Portal',
     accent: 'pink',
-    image: 'assets/images/project-1.png',
+    image: 'assets/images/digital profile.png',
     tags: ['Government', 'Data', 'Portal']
   },
   {
@@ -99,7 +99,7 @@ const fallbackProjects = [
     client: 'Municipal Ops',
     product: 'Inventory Core',
     accent: 'green',
-    image: 'assets/images/project-2.png',
+    image: '',
     tags: ['Django', 'Ops', 'Reports']
   }
 ];

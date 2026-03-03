@@ -9,7 +9,7 @@
     "client": "Chulachuli Rural Municipality",
     "product": "Digital Profile Portal",
     "accent": "pink",
-    "image": "assets/images/project-1.png",
+    "image": "assets/images/digital profile.png",
     "tags": ["Government", "Data", "Profile"]
   },
   {
@@ -22,7 +22,7 @@
     "client": "Municipal Operations Office",
     "product": "Inventory Core",
     "accent": "green",
-    "image": "assets/images/project-2.png",
+    "image": "",
     "tags": ["Django", "Procurement", "Reporting"]
   },
   {
@@ -35,7 +35,7 @@
     "client": "Public Service Units",
     "product": "Service API Gateway",
     "accent": "green",
-    "image": "assets/images/project-3.png",
+    "image": "",
     "tags": ["API", "Public Service", "Integration"]
   },
   {
@@ -61,7 +61,7 @@
     "client": "Sample Client A",
     "product": "Sample Product Alpha",
     "accent": "green",
-    "image": "assets/images/project-1.png",
+    "image": "",
     "tags": ["Dummy", "Preview", "Alpha"]
   }
 ]
