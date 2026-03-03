@@ -6,24 +6,24 @@
     "extra": "Focused on data integrity, modular service definitions, and cross-department visibility.",
     "link": "#",
     "logo": "Gov Project",
-    "client": "Chulachuli Rural Municipality",
+    "client": "Deumai, Chulachuli, Phakphokthum, Sunkoshi Rural / Municipality",
     "product": "Digital Profile Portal",
     "accent": "pink",
-    "image": "assets/images/digital profile.png",
+    "image": "assets/images/project-v1.png",
     "tags": ["Government", "Data", "Profile"]
   },
   {
-    "title": "Inventory System",
-    "summary": "Django-based stock and supplier management workflows.",
-    "detail": "Implemented inventory lifecycle tracking, supplier records, and reporting for accountability.",
-    "extra": "Built role-based actions and audit-ready change tracking.",
-    "link": "#",
-    "logo": "Django App",
-    "client": "Municipal Operations Office",
-    "product": "Inventory Core",
-    "accent": "green",
-    "image": "",
-    "tags": ["Django", "Procurement", "Reporting"]
+  "title": "Justice Case Management System (JCMS)",
+  "summary": "A digital platform for managing judicial committee cases at the local government level.",
+  "detail": "Implemented end-to-end case lifecycle management including complaint registration, hearing scheduling, decision recording, and status tracking for transparency and accountability.",
+  "extra": "Built role-based access control, audit-ready activity logs, automated reporting, and structured workflow management aligned with local governance procedures.",
+  "link": "#",
+  "logo": "JCMS",
+  "client": "Local Government Judicial Committee",
+  "product": "Justice Case Management System",
+  "accent": "blue",
+  "image": "assets/images/project-jcms.png",
+  "tags": ["Case Management", "Judicial Committee", "Governance", "Workflow", "Reporting"]
   },
   {
     "title": "E-Governance API",
@@ -35,7 +35,7 @@
     "client": "Public Service Units",
     "product": "Service API Gateway",
     "accent": "green",
-    "image": "",
+    "image": "assets/images/projectv-3.png",
     "tags": ["API", "Public Service", "Integration"]
   },
   {
@@ -52,16 +52,42 @@
     "tags": ["Flutter", "Mobile", "Field Ops"]
   },
   {
-    "title": "Dummy Project Alpha",
-    "summary": "Prototype card for layout preview and spacing tests.",
-    "detail": "Used to validate visual balance in the left column.",
-    "extra": "Temporary entry to inspect tile rhythm with more cards.",
-    "link": "#",
-    "logo": "Demo",
-    "client": "Sample Client A",
-    "product": "Sample Product Alpha",
-    "accent": "green",
-    "image": "",
-    "tags": ["Dummy", "Preview", "Alpha"]
-  }
+  "title": "Digital Documentary – Chulachuli & Kamal Rural Municipalities",
+  "summary": "A comprehensive digital documentation project highlighting the history, culture, development progress, and governance initiatives of Chulachuli and Kamal Rural Municipalities.",
+  "detail": "Captured and structured multimedia content including historical background, socio-cultural diversity, infrastructure development, public services, and community narratives to create an accessible digital archive for citizens and stakeholders.",
+  "extra": "Integrated visual storytelling, interviews, geographic highlights, and institutional records to support transparency, local identity preservation, and promotional outreach.",
+  "link": "#",
+  "logo": "Digital Documentary",
+  "client": "Chulachuli Rural Municipality & Kamal Rural Municipality",
+  "product": "Municipal Digital Documentary Archive",
+  "accent": "green",
+  "image": "assets/images/chulachuli-kamal-documentary.png",
+  "tags": ["Digital Archive", "Municipal Documentation", "Local Governance", "Cultural Heritage", "Multimedia"]
+},
+{
+  "title": "Pardaphas News Portal",
+  "summary": "A dynamic online news portal with robust content management and multimedia publishing capabilities.",
+  "detail": "Developed a scalable news platform featuring dynamic page generation, multimedia integration, advertisement management, role-based user access, comment moderation, SEO optimization, and analytics integration.",
+  "extra": "Built using Django and Wagtail CMS with a responsive layout optimized for performance, editorial workflow efficiency, and audience engagement.",
+  "link": "https://pardaphas.com",
+  "logo": "Pardaphas",
+  "client": "Pardaphas Media",
+  "product": "Digital News Platform",
+  "accent": "red",
+  "image": "assets/images/pardaphas-news.png",
+  "tags": ["Django", "Wagtail CMS", "News Portal", "CMS", "SEO", "Analytics"]
+},
+{
+  "title": "Navodaya Cooperative Website",
+  "summary": "Corporate website developed to present services, organizational information, and updates for Navodaya Cooperative.",
+  "detail": "Designed and developed a responsive and user-friendly website enabling structured content management, service presentation, news publishing, and organizational transparency.",
+  "extra": "Integrated Django backend with Wagtail CMS for efficient content updates, multilingual support, and scalable content management.",
+  "link": "https://navodayacoop.com.np/en/",
+  "logo": "Navodaya Cooperative",
+  "client": "Navodaya Cooperative",
+  "product": "Corporate Web Platform",
+  "accent": "blue",
+  "image": "assets/images/navodaya-website.png",
+  "tags": ["Django", "Wagtail CMS", "Corporate Website", "Content Management", "Responsive Design"]
+}
 ]
